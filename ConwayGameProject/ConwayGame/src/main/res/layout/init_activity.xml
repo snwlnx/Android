@@ -50,9 +50,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     />
+            <Button
+                android:id="@+id/rand"
+                android:onClick="randLocation"
+                android:text="@string/randBtn"
+                android:layout_toRightOf="@+id/btnStart"
+                android:layout_below="@id/gridview"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
 
                 <Button
-                    android:id="@+id/btn1"
+                    android:id="@+id/setSize"
                     android:onClick="pauseGame"
                     android:text="@string/setSize"
                     android:layout_toRightOf="@+id/btnStart"

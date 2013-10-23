@@ -1,5 +1,6 @@
 package com.conwayGame.conwaygame;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,15 +16,23 @@ public class EnterSizeDialog extends DialogFragment {
 
     GameActivity activity;
 
-    EnterSizeDialog(GameActivity activity) {
-        this.activity = activity;
 
+    public static EnterSizeDialog newInstance() {
+        EnterSizeDialog frag = new EnterSizeDialog();
+        return frag;
     }
+
 
     public interface EnterSizeListener {
         void enterSize(EditText editText);
     }
 
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (GameActivity)activity;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

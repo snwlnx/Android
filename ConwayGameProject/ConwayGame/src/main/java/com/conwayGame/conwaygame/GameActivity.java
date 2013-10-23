@@ -58,7 +58,7 @@ public class GameActivity extends Activity implements EnterSizeDialog.EnterSizeL
 
     public void pauseGame(View view) {
         grid.pause();
-        EnterSizeDialog enterTextDialog = new EnterSizeDialog(this);
+        EnterSizeDialog enterTextDialog = EnterSizeDialog.newInstance();
         enterTextDialog.show(getFragmentManager(),"");
     }
 
@@ -76,14 +76,13 @@ public class GameActivity extends Activity implements EnterSizeDialog.EnterSizeL
     }
 
     public void changeGridImages(){
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                adapter.notifyDataSetChanged();
-                ((TextView)findViewById(R.id.txt)).setText("Generation   "+ grid.generation);
-            }
-        });
+        adapter.notifyDataSetChanged();
+        ((TextView)findViewById(R.id.txt)).setText("Generation   "+ grid.generation);
     }
+    public void finish(){
+        ((TextView)findViewById(R.id.txt)).setText("Game Finished");
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,4 +90,7 @@ public class GameActivity extends Activity implements EnterSizeDialog.EnterSizeL
         return true;
     }
 
+    public void randLocation(View view) {
+        grid.randLocation();
+    }
 }

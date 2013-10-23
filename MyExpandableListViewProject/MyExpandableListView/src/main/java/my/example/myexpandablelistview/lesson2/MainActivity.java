@@ -10,7 +10,6 @@ public class MainActivity extends Activity {
 
 	private static final int THIRD_ACTIVITY = 100500;
 	private static final String BUTTON_TWO_STATE = "button_two_state";
-	private static final String ACTION_FOURTH_ACTIVITY = "com.example.examples.FOURTH_ACTIVITY";
 	private Button btn2;
 	private String btn2Text;
 
@@ -21,7 +20,7 @@ public class MainActivity extends Activity {
 			btn2Text = savedInstanceState.getString(BUTTON_TWO_STATE);
 			
 		}
-		setContentView(R.layout.activity);
+		setContentView(R.layout.activity_main);
 		
 		Button btn1 = (Button) findViewById(R.id.button1);
 		btn1.setOnClickListener(new View.OnClickListener() {
@@ -42,17 +41,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				startActivityForResult(new Intent(MainActivity.this, ThirdActivity.class), THIRD_ACTIVITY);
-			}
-		});
-		
-		Button btn3 = (Button) findViewById(R.id.button3);
-		btn3.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent();
-				i.setAction(ACTION_FOURTH_ACTIVITY);
-				startActivity(i);
 			}
 		});
 		

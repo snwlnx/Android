@@ -3,12 +3,15 @@ package com.conwayGame.conwaygame;
 import android.os.Handler;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Timer;
 
 /**
  * Created by korolkov on 10/10/13.
  */
-public  class Grid extends Thread implements Serializable{
+public  class Grid extends Thread {
 
 
     public static final int STATE_ALIVE = 1, STATE_DEAD = 0, MaxNeighbors = 3, MinNeighbors = 2;
@@ -43,6 +46,14 @@ public  class Grid extends Thread implements Serializable{
 
         public boolean isAlive(){
             return (elementState == STATE_ALIVE)?true:false;
+        }
+
+        private void die(){
+            elementState = STATE_DEAD;
+        }
+
+        private void live(){
+            elementState = STATE_ALIVE;
         }
 
 
@@ -91,9 +102,15 @@ public  class Grid extends Thread implements Serializable{
 
     private ArrayList<ArrayList<GridElement>> grids;
 
+
+
     public  int generation = 0;
 
-    private int gridSize   = 0;
+    private int gridSize;
+
+    private int timePerCycle = 1000;
+
+    private Random rand = new Random(System.currentTimeMillis());
 
     private Handler handler = new Handler() ;
 
@@ -117,6 +134,25 @@ public  class Grid extends Thread implements Serializable{
         return grids.get(rowPos).get(colPos).getElementState();
     }
 
+    private void live(int position) {
+        grids.get((position+1)/gridSize).get((position+1)%gridSize).live();
+    }
+
+    private void clr() {
+        for (int j = 0 ; j < gridSize + 2;j++) {
+            grids.get(0).get(j).die();
+        }
+        for (int j = 0 ; j < gridSize + 2;j++) {
+            grids.get(gridSize + 1).get(j).die();
+        }
+        for (int i = 0 ; i < gridSize + 2;i++) {
+            grids.get(i).get(0).die();
+        }
+        for (int i = 0 ; i < gridSize + 2;i++) {
+            grids.get(i).get(gridSize+1).die();
+        }
+    }
+
 
     public void turnElementState(int rowPos, int columnPos) {
         grids.get(rowPos).get(columnPos).turnState();
@@ -137,18 +173,16 @@ public  class Grid extends Thread implements Serializable{
         itemsTurnStateAfterStep = new ArrayList<ElementCoordinates>();
     }
 
-    private void initGrid(int gridSize){
-        this.gridSize  = gridSize;
+    private void initGrid(int gridLength){
+        this.gridSize  = gridLength;
         grids          = new ArrayList<ArrayList<GridElement>>();
 
-        GridElement            element;
         ArrayList<GridElement> rowElements;
 
         for (int i = 0 ; i < gridSize + 2; i++) {
             rowElements = new ArrayList<GridElement>();
             for (int j = 0 ; j < gridSize + 2;j++) {
-                element = new GridElement(i,j);
-                rowElements.add(element);
+                rowElements.add(new GridElement(i,j));
             }
             grids.add(i,rowElements);
         }
@@ -156,6 +190,7 @@ public  class Grid extends Thread implements Serializable{
     }
 
     public  void updateGrid(){
+        clr();
         ArrayList<GridElement> rowElements;
         for (int i = 1 ; i <= gridSize;i++) {
             rowElements = grids.get(i);
@@ -166,6 +201,32 @@ public  class Grid extends Thread implements Serializable{
         generation++;
         turnItemsStateAfterStep();
     }
+
+    private void clear(){
+        ArrayList<GridElement> rowElements;
+
+        for (int i = 0 ; i < gridSize + 2; i++) {
+            rowElements = grids.get(i);
+            for (int j = 0 ; j < gridSize + 2;j++) {
+                rowElements.get(j).die();
+            }
+        }
+    }
+
+    private void rand(){
+        for(int i = 0 ; i < (gridSize*gridSize)/4; i++){
+            live(rand.nextInt(gridSize*gridSize));
+        }
+    }
+
+
+    public void randLocation(){
+        clear();
+        rand();
+        activity.changeGridImages();
+    }
+
+
 
     private  void turnItemsStateAfterStep(){
         if (itemsTurnStateAfterStep.isEmpty()) {
@@ -184,7 +245,7 @@ public  class Grid extends Thread implements Serializable{
 
     public void start(){
         if (!threadRunning) {
-            handler.postDelayed(this,1000);
+            handler.postDelayed(this,timePerCycle);
             threadRunning = true;
             gameContinued = true;
         }else {
@@ -196,11 +257,13 @@ public  class Grid extends Thread implements Serializable{
     @Override
     public void run() {
         if (!isGameContinued() ){
+            generation = 0;
+            activity.finish();
             handler.removeCallbacks(this);
         }else {
             updateGrid();
             activity.changeGridImages();
-            handler.postDelayed(this,1000);
+            handler.postDelayed(this,timePerCycle);
         }
 
     }

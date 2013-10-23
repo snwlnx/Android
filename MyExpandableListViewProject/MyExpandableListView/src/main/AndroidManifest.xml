@@ -30,7 +30,6 @@
         <activity android:name="my.example.myexpandablelistview.lesson3.AsyncTaskSimpleActivity"/>
         <activity android:name="my.example.myexpandablelistview.lesson2.SecondActivity"/>
         <activity android:name="my.example.myexpandablelistview.lesson2.ThirdActivity"/>
-        <activity android:name="my.example.myexpandablelistview.lesson2.FourthActivity"/>
     </application>
 
 </manifest>

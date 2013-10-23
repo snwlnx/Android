@@ -69,9 +69,9 @@ public class ListViewAdapter extends BaseExpandableListAdapter {
             LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.lessons_view, null);
         }
-
+        String title = mLessons.get(lessonsPosition).get(0);
         TextView textGroup = (TextView) view.findViewById(R.id.textGroup);
-        textGroup.setText("Group " + Integer.toString(lessonsPosition));
+        textGroup.setText(title.substring(title.indexOf("lesson"),title.lastIndexOf(".")));
 
         return view;
 
@@ -87,7 +87,8 @@ public class ListViewAdapter extends BaseExpandableListAdapter {
         }
 
         TextView textChild = (TextView) view.findViewById(R.id.textChild);
-        textChild.setText(mLessons.get(lessonPosition).get(activityPosition));
+        String title = mLessons.get(lessonPosition).get(activityPosition);
+        textChild.setText(title.substring(title.lastIndexOf(".")+1));
 
         return view;
     }

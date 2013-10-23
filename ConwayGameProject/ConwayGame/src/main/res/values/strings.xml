@@ -11,5 +11,6 @@
     <string name="conwayGame">Conway Game</string>
     <string name="setSize">Set size</string>
     <string name="startStop">Start/Stop</string>
+    <string name="randBtn">Rand</string>
 
 </resources>
