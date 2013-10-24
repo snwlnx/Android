@@ -12,8 +12,7 @@
 
         android:theme="@android:style/Theme.Holo.Light">
 
-        <activity android:name=".ActivityPage2"
-            android:theme="@android:style/Theme.Holo.Light"></activity>
+        <activity android:name=".ActivityPage2"></activity>
         <activity android:name=".ActivityPage3"></activity>
         <activity android:name=".ActivityPage4"></activity>
 

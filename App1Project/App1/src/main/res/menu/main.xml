@@ -2,7 +2,6 @@
 
 
     <item android:id="@+id/itemId0"
-        android:title="Action Item0"
         android:onClick="startActivityPage2"
         android:orderInCategory="0"
         android:icon="@drawable/onclick_icon1"
@@ -10,7 +9,6 @@
 
 
     <item android:id="@+id/itemId1"
-        android:title="Action Item1"
         android:onClick="startActivityPage3"
         android:orderInCategory="2"
         android:icon="@drawable/onclick_icon2"
@@ -18,9 +16,7 @@
 
 
     <item android:id="@+id/itemId2"
-
         android:onClick="startActivityPage4"
-        android:title="Action Item2"
         android:orderInCategory="2"
         android:icon="@drawable/onclick_icon3"
         android:showAsAction="ifRoom|withText" />
