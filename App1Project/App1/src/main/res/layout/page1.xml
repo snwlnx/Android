@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:src="@drawable/globe_symbol_android_small">
+    </ImageView>
+
+    <Button
+        android:id="@+id/buttonPage4"
+        android:text="@string/textButton1"
+        android:onClick="clickButton1"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:src="@drawable/ic_launcher"
+        android:layout_alignTop="@id/image"
+        android:layout_toRightOf="@id/image"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:text="@string/textButton2"
+        android:onClick="clickButton2"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:src="@drawable/ic_launcher"
+        android:layout_toRightOf="@id/image"
+        android:layout_alignBottom="@id/image"/>
+
+    <TextView
+        android:id="@+id/textMainPage"
+        android:text="@string/text1"
+        android:layout_height="100dp"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/image"
+        android:gravity="center">
+    </TextView>
+
+    <Button
+        android:onClick="showEditDialog"
+        android:id="@+id/showDialogButton"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_below="@id/textMainPage"
+        android:text="@string/dialog"/>
+
+<ScrollView
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:layout_below="@id/showDialogButton"
+    android:scrollbars="vertical">
+    <EditText
+        android:id="@+id/enterText"
+        android:hint="@string/textEnterMsg"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_alignRight="@+id/button2"
+        android:layout_below="@+id/showDialogButton">
+
+    </EditText>
+
+
+</ScrollView>
+
+
+
+</RelativeLayout>

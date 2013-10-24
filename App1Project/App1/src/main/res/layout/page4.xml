@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/image1"
+        android:src="@drawable/globe_symbol_android_small"
+        android:layout_height="100dp"
+        android:layout_width="wrap_content">
+    </ImageView>
+
+    <TextView
+        android:text="@string/text1"
+        android:id="@+id/someTextTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image1"
+        android:layout_alignTop="@id/image1"
+        />
+
+
+
+    <ImageView
+
+        android:id="@+id/image2"
+        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/globe_symbol_android_small">
+    </ImageView>
+
+
+    <TextView
+        android:text="@string/text1"
+        android:id="@+id/someTextBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/image2"
+        android:layout_alignParentBottom="true"
+        />
+
+
+
+    <Button
+        android:id="@id/buttonPage4"
+        android:onClick="showNoticeDialog"
+        android:text="@string/dialog"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="appName">First task</string>
+    <string name="action_settings">Settings</string>
+    <string name="text1">
+
+        =Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </string>
+    <string name="dialog">Dialog</string>
+    <string name="action_search" />
+    <string name="enter_text">enter_text</string>
+    <string name="ok_string">ok</string>
+    <string name="cancel">cancel</string>
+
+    <string name="btnCancel">Cancel</string>
+    <string name="btnOk">Ok</string>
+    <string name="enterText">Enter Text</string>
+    <string name="textButton1">Button1</string>
+    <string name="textButton2">Button2</string>
+    <string name="textEnterMsg">Please enter message</string>
+    <string name="secondDialogString">Больше не показывать это окно</string>
+    <string name="dialogCheckBox">Больше не показывать это окно</string>
+
+</resources>
