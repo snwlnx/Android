@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DB Application</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Surname">Surname</string>
+    <string name="Name">Name</string>
+    <string name="car">CarBrand</string>
+    <string name="btnOk">Ok</string>
+    <string name="btnCancel">Cancel</string>
+
+</resources>
